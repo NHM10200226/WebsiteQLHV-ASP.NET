@@ -1,0 +1,76 @@
+﻿@model List<WebQLHV.DTO.Diem_DTO>
+
+@{
+    ViewBag.Title = "_Partial_banglai";
+}
+
+
+<div class="card-body table-responsive p-0" style="height: 400px;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Học viên</th>
+                <th>Trạng thái</th>
+                <th>Số giấy phép lái xe</th>
+                <th>Đơn vị cấp bằng</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                var i = 1;
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.HOCVIEN</td>
+                        <td>
+                            @if (item.THUCHANH is string && Convert.ToInt32(item.THUCHANH) > 80 && item.LYTHUYET is string && Convert.ToInt32(item.LYTHUYET) > 32)
+                            {
+                                <p>Đã tốt nghiệp</p>
+                            }
+                            else
+                            {
+                                <p>Đã rớt</p>
+                            }
+                        </td>
+                        <td>
+                            @if (item.THUCHANH is string && Convert.ToInt32(item.THUCHANH) > 80 && item.LYTHUYET is string && Convert.ToInt32(item.LYTHUYET) > 32)
+                            {
+                                string randomString = GenerateRandomString(12, item.ID);
+                                <p>@randomString</p>
+                            }
+                            else
+                            { <p>Thi lại</p>}
+                        </td>
+                        <td>Bộ Giao Thông Vận Tải</td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4">Không có bản ghi nào</td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    </div>
+    @functions {
+        public string GenerateRandomString(int length, string itemId)
+        {
+            const string chars = "0123456789";
+            var random = new Random(itemId.GetHashCode());
+            var randomString = new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            return randomString;
+        }
+    }

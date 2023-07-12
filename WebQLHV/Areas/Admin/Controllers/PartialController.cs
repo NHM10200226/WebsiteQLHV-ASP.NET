@@ -67,5 +67,12 @@ namespace WebQLHV.Areas.Admin.Controllers
             return PartialView("~/Areas/Admin/Views/Partial/_Partial_diemthi.cshtml", lstdiem);
         }
 
+        public PartialViewResult getBanglai(string name = "", string status = "NONE")
+        {
+            string sql = "SELECT  DiemThi.ID, KhoaHoc.NAME as KHOAHOC, TTHocVien.HOTEN as HOCVIEN, DiemThi.LYTHUYET, DiemThi.THUCHANH FROM DiemThi\r\nLEFT JOIN KhoaHoc ON KhoaHoc.ID = DiemThi.KHOAHOC\r\nLEFT JOIN TTHocVien ON DiemThi.HOCVIEN = TTHocVien.ID";
+            List<Diem_DTO> lstdiem = db.Database.SqlQuery<Diem_DTO>(sql).ToList();
+            return PartialView("~/Areas/Admin/Views/Partial/_Partial_banglai.cshtml", lstdiem);
+        }
+
     }
 }

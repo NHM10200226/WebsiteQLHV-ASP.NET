@@ -144,6 +144,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BanglaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\DiemController.cs" />
     <Compile Include="Areas\Admin\Controllers\HangGPLXController.cs" />
     <Compile Include="Areas\Admin\Controllers\HocVienController.cs" />
@@ -2233,6 +2234,8 @@
     <Content Include="Areas\Admin\Views\Partial\_Partial_diemthi.cshtml" />
     <Content Include="Areas\Admin\Views\Diem\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Diem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Banglai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Partial\_Partial_banglai.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
