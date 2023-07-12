@@ -1,0 +1,95 @@
+﻿@model List<WebQLHV.DTO.HocVien_DTO>
+@{
+    ViewBag.Title = "_Partial_hocvien";
+}
+
+<!-- /.row -->
+<!-- /.card-header -->
+<div class="card-body table-responsive p-0" style="height: 500px;">
+    <table class="table table-head-fixed text-nowrap" border="1">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>SDT</th>
+                <th>Ngày sinh</th>
+                <th>CMND</th>
+                <th>Nơi cấp</th>
+                <th>Giới tính</th>
+                <th>Trung tâm</th>
+                <th>Hạng thi</th>
+                <th>Điểm lý thuyết/thực hành</th>
+                <th>Địa chỉ</th>
+                <th>Nơi học</th>
+                <th>Học phí</th>
+                <th>Hình ảnh</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                var i = 1;
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.HOTEN</td>
+                        <td>@item.SDT</td>
+                        <td>@item.NGAYSINH</td>
+                        <td>@item.CMND</td>
+                        <td>@item.NOICAP</td>
+                        @if (@item.GIOITINH == "1")
+                        {
+                            <td>Nữ</td>
+                        }
+                        else
+                        {
+                            <td>Nam</td>
+                        }
+                        <td>@item.TRUNGTAM</td>
+                        <td>@item.HANGTHI</td>
+                        @if (@item.LYTHUYET != null)
+                        {
+                            <td>LT: @item.LYTHUYET - TH: @item.THUCHANH</td>
+                        }
+                        else
+                        {
+                            <td>Chưa có điểm thi</td>
+                        }
+                        <td>@item.DIACHI</td>
+                        @if (@item.NOIHOC == "1")
+                        {
+                            <td>Tự đào tạo</td>
+                        }
+                        else
+                        {
+                            <td>Tại trung tâm</td>
+                        }
+                        <td>@item.HOCPHI</td>
+                        <td>
+                            <img style="width:3rem" class="" src="~/Hinh/Hocvien/@item.HINHANH" alt="">
+                        </td>
+                        <td>@item.GHICHU</td>
+                        <td>
+                            <a href="@Url.Action("edit", new { area = "admin", controller = "hocvien",id=item.ID })" class="btn btn-primary">Sửa</a>
+                            <button type="submit" onclick="btndelete('@item.ID')" class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4">Không có bản ghi nào</td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    </div>
+    <!-- /.card-body -->

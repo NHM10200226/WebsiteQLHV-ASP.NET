@@ -1,0 +1,50 @@
+﻿@model List<WebQLHV.Models.KhoaHoc>
+
+@{
+    ViewBag.Title = "_Partial_khoahoc";
+}
+
+<!-- /.row -->
+<!-- /.card-header -->
+<div class="card-body table-responsive p-0" style="height: 400px;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên khóa</th>
+                <th>Ngày khai giảng</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                var i = 1;
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.NAME</td>
+                        <td>@item.DATEOPEN</td>
+                        <td>
+                            <a href="@Url.Action("edit", new { area = "admin", controller = "khoahoc",id=item.ID })" class="btn btn-primary">Sửa</a>
+                            <button type="submit" onclick="btndelete('@item.ID')" class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4">Không có bản ghi nào</td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    </div>
+    <!-- /.card-body -->

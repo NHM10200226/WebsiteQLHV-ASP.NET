@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="THNNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DiemThi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HOCVIEN" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LYTHUYET" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="THUCHANH" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HangGPLX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="STATUS" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HoSo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LOAIHOSO" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HOCVIEN" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HOSO" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KhoaHoc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DATEOPEN" Type="date" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiHoSo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="TRUNGTAM" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="STATUS" Type="bit" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TTHocVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HOTEN" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NGAYSINH" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CMND" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NOICAP" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GIOITINH" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HANGTHI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="TRUNGTAM" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NOIHOC" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HOCPHI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HINHANH" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThongTin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HANG" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="TRUNGTAM" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PRICE" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrungTam">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HOTLINE" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ADDRESS" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATEDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="THNNModelStoreContainer">
+    <EntitySet Name="DiemThi" EntityType="Self.DiemThi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HangGPLX" EntityType="Self.HangGPLX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoSo" EntityType="Self.HoSo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiHoSo" EntityType="Self.LoaiHoSo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TTHocVien" EntityType="Self.TTHocVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongTin" EntityType="Self.ThongTin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrungTam" EntityType="Self.TrungTam" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

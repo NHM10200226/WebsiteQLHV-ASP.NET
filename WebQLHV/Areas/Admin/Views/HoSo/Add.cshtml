@@ -1,0 +1,90 @@
+﻿@model WebQLHV.Models.HoSo
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/HoSo" class="nav-link">Danh sách</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Thêm mới</a>
+        </li>
+    </ul>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới hồ sơ</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Hồ sơ</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Nhập thông tin hồ sơ</h3>
+        </div>
+        <div class="card-body">
+            <div class="bs-stepper-content">
+                <!-- your steps content here -->
+                <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="form-group">
+                        <label for="exampleInput">Loại hợp đồng</label>
+                        @Html.DropDownList("LoaiHoSo", new SelectList(ViewData["LITLOAIHD"] as List<SelectListItem>, "Value", "Text"),
+                                                                 new { @class = "form-control select2 select2-blue ", data_placeholder = "Chọn..." })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName">Học viên</label>
+                        @Html.DropDownList("HocVien", new SelectList(ViewData["LITTHV"] as List<SelectListItem>, "Value", "Text"),
+                                                                 new { @class = "form-control select2 select2-blue ", data_placeholder = "Chọn..." })
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú</label>
+                        <textarea class="form-control" id="GHICHU" name="GHICHU" rows="3" placeholder="Enter ..."></textarea>
+                    </div>
+                    <div id="uploadfile" class="form-group">
+                        <label for="fileupload" class=""><i class=""></i>  Nhập File ...</label>
+                        <input type="file" id="fileupload" name="UploadFiles" onchange="OnchangeFile(this);"
+                               accept="image/jpg, image/jpeg, image/raw, image/bmp, image/png, image/webp, application/pdf, application/msword,
+                                                application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                    </div>
+                </div>
+                <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                    <a href="@Url.Action("index", new { area = "admin", controller = "HoSo" })" onclick="onShow();" class="btn btn-danger">Hủy</a>
+                    <button type="submit" onclick="btnadd()" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Footer
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<script src="~/ajax/Admin/ajaxHoSo.js"></script>

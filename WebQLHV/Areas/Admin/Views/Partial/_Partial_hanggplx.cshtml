@@ -1,0 +1,58 @@
+﻿@model List<WebQLHV.Models.HangGPLX>
+
+@{
+    ViewBag.Title = "_Partial_hanggplx";
+}
+
+<!-- /.row -->
+<!-- /.card-header -->
+<div class="card-body table-responsive p-0" style="height: 400px;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>NAME</th>
+                <th>STATUS</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                var i = 1;
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.NAME</td>
+                        @if (@item.STATUS == "1")
+                        {
+                            <td>Còn</td>
+                        }
+                        else
+                        {
+                            <td>Hết</td>
+                        }
+
+                        <td>
+                            <a href="@Url.Action("edit", new { area = "admin", controller = "hanggplx",id=item.ID })" class="btn btn-primary">Sửa</a>
+                            <button type="submit" onclick="btndelete('@item.ID')" class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4">Không có bản ghi nào</td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    </div>
+    <!-- /.card-body -->

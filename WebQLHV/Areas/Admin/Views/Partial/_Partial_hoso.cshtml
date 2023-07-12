@@ -1,0 +1,51 @@
+﻿@model List<WebQLHV.DTO.HoSo_DTO>
+
+@{
+    ViewBag.Title = "_Partial_HoSo";
+}
+
+<div class="card-body table-responsive p-0" style="height: 400px;">
+    <table class="table table-bordered" id="tbthongtin">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Loại hồ sơ</th>
+                <th>Học viên</th>
+                <th>Ghi chú</th>
+                <th>Hợp đồng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                var i = 1;
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.LOAIHOSO</td>
+                        <td>@item.HOCVIEN</td>
+                        <td>@item.GHICHU</td>
+                        <td>@item.HOSO</td>
+                        <td>
+                            <a href="@Url.Action("XemHoSo", new { area = "admin", controller = "HoSo",id = item.ID })" target="_blank" class="btn btn-primary">Xem</a>
+                            <button type="submit" onclick="btndelete('@item.ID')" class="btn btn-danger">Xóa</button>
+
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4">Không có bản ghi nào</td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    </div>
+    <script src="~/ajax/Admin/ajaxHoSo.js"></script>

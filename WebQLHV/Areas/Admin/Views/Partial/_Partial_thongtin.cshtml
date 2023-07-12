@@ -1,0 +1,47 @@
+﻿@model List<WebQLHV.DTO.ThongTin_DTO>
+
+@{
+    ViewBag.Title = "_Partial_thongtin";
+}
+<div class="card-body table-responsive p-0" style="height: 400px;">
+    <table class="table table-bordered" id="tbthongtin">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên hạng</th>
+                <th>Tên trung tâm</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                var i = 1;
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.NAMEHANG</td>
+                        <td>@item.NAMETRUNGTAM</td>
+                        <td>@item.PRICE</td>
+                        <td>
+                            <a href="@Url.Action("edit", new { area = "admin", controller = "thongtin",id=item.ID })" class="btn btn-primary">Sửa</a>
+                            <button type="submit" onclick="btndelete('@item.ID')" class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4">Không có bản ghi nào</td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    </div>
